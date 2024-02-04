@@ -42,7 +42,7 @@ export class Matricula{
             throw new Error('Data inválida');
         }
 
-        if(periodo.semestre > 2){
+        if(periodo.semestre > 2 || periodo.semestre < 1){
             throw new Error('Semestre inválido')
         }
 
