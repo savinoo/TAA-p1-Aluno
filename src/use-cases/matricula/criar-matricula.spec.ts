@@ -19,7 +19,7 @@ describe('criar matricula', () => {
         expect(criaMatricula.executar({
             aluno:"Valmir Monteiro",
             disciplina:"Engenharia de Software",
-            periodo: {ano: 2023, semestre: 1},
+            periodo: {ano: 2023, semestre:1},
             professor:"Luiz Gustavo"
         })).resolves.toBeInstanceOf(Matricula)
     })
