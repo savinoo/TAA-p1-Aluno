@@ -35,8 +35,6 @@ describe('criar matricula', () => {
             professor:"Luiz Gustavo"
         })
 
-
-
         expect(criaMatricula.executar({
             aluno:"Valmir Monteiro",
             disciplina:"Engenharia de Software",
