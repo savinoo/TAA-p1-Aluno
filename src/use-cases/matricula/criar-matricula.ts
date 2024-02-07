@@ -50,8 +50,6 @@ export class CriaMatricula {
             disciplina
         })
 
-        // Add regras de negócio
-
         await this.matriculasRepository.create(matricula)
 
         return matricula
@@ -66,12 +64,17 @@ export class CriaMatricula {
             var pontuacaoAlunos = new Array<PontuacaoMatricula>;
 
             matriculasDisciplina.forEach(element => {
-                var pontuacaoAluno = element.aluno.cr;
+                
                 // Finalista na verdade é quem cursa TCC II, mas nesse caso foi considerado em está no último período
-                if(element.aluno.periodo_atual == 10){ 
+                const aluno_finalista = element.aluno.periodo_atual == 10;
+                const aluno_periodizado = element.aluno.periodo_atual == element.disciplina.disciplina_base.periodo;
+                
+                var pontuacaoAluno = element.aluno.cr;
+                
+                if(aluno_finalista){ 
                     pontuacaoAluno += 20;
                 // Aluno Periodizado
-                }else if(element.aluno.periodo_atual == element.disciplina.disciplina_base.periodo){
+                }else if(aluno_periodizado){
                     pontuacaoAluno += 10;
                 }
                 const pontuacao : PontuacaoMatricula = {
