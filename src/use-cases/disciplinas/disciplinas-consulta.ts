@@ -22,12 +22,16 @@ export class ConsultarDisciplina {
         if(listaDisciplinas){
             // Disciplinas nao cursadas ainda
             var disciplinas_nao_cursadas = new Array<Disciplina>;
-            listaDisciplinas.forEach(element => {
-                if(!disciplinasCursadas.includes(element.disciplina_base.id)){
-                    disciplinas_nao_cursadas.push({... element})
-                }
-
-            });
+            if(disciplinasCursadas.length > 0){
+                listaDisciplinas.forEach(element => {
+                    if(!disciplinasCursadas.includes(element.disciplina_base.id)){
+                        disciplinas_nao_cursadas.push({... element})
+                    }
+    
+                });
+            } else {
+                disciplinas_nao_cursadas = listaDisciplinas;
+            }
 
             // Disciplinas disponiveis para o aluno
             if(disciplinasCursadas.length > 0){
