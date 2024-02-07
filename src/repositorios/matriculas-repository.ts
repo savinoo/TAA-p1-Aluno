@@ -1,8 +1,11 @@
 import {Matricula} from '../entities/matricula/matricula'
-import { Semestre } from '../types/semestre';
+import { Aluno } from '../types/aluno';
+import { Disciplina } from '../types/disciplina';
 
 export interface MatriculasRepository{
     create(matricula: Matricula): Promise<void>;
 
-    encontraMatriculaDuplicada(aluno: string, disciplina: string, periodo: Semestre): Promise<Matricula | null>
+    encontraMatriculaDuplicada(aluno: Aluno, disciplina: Disciplina): Promise<Matricula | null>;
+
+    listarAlunosMatriculadosDisciplina(disciplina: Disciplina): Promise<Matricula[] | null>;
 }

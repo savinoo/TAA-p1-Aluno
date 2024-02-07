@@ -1,10 +1,11 @@
-import {Semestre} from '../../types/semestre'
+import { Aluno } from '../../types/aluno';
+import { Disciplina_base } from '../../types/disciplina';
+import {SemestreInfo} from '../../types/semestre'
+import { Disciplina } from '../../types/disciplina';
 
 export interface MatriculaProps{
-    aluno: string;
-    disciplina: string;
-    periodo: Semestre;
-    professor: string;
+    aluno: Aluno;
+    disciplina: Disciplina;
 }
 
 export class Matricula{
@@ -18,33 +19,22 @@ export class Matricula{
         return this.props.disciplina;
     }
 
-    get periodo(){
-        return this.props.periodo;
-    }
-
-    set periodo(semestre: Semestre){
-        this.periodo = semestre;
-    }
-
-    get professor(){
-        return this.props.professor;
-    }
-
     constructor(props: MatriculaProps){
        /* this.periodo = {ano: new Date().getFullYear(),
         semestre: new Date().getMonth() <= 6 ? 1: 2};*/
+        
+        const {semestre_info} = props.disciplina;
 
-        const {periodo} = props
-
-        if(periodo.ano > new Date().getFullYear() || 
-        (periodo.ano == new Date().getFullYear() &&
-        (new Date().getMonth() <= 6 && periodo.semestre==2))){
+        if(semestre_info.ano > new Date().getFullYear() || 
+        (semestre_info.ano == new Date().getFullYear() &&
+        (new Date().getMonth() <= 6 && semestre_info.semestre==2))){
             throw new Error('Data inválida');
         }
 
-        if(periodo.semestre > 2 || periodo.semestre < 1){
+        if(semestre_info.semestre > 2 || semestre_info.semestre < 1){
             throw new Error('Semestre inválido')
         }
+        
 
         this.props = props;
     }

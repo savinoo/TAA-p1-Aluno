@@ -1,5 +1,3 @@
-import { Disciplina } from "./disciplina";
-
 export type Aluno = {
     matricula: string;
     nome: string;

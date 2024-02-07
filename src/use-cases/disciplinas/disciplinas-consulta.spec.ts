@@ -1,9 +1,10 @@
 import {describe, it, expect,  afterAll, vi } from 'vitest';
 import { InMemoryDisciplinasRepository } from "../../repositorios/in-memory/in-memory-disciplina-repository";
 import { Aluno } from "../../types/aluno";
-import { Disciplina, compararDisciplina } from '../../types/disciplina';
+import { Disciplina, Disciplina_base, compararDisciplina } from '../../types/disciplina';
 import { ConsultarDisciplina } from './disciplinas-consulta';
-
+import { PreencheBD } from '../../repositorios/in-memory/preenche-repositorio';
+import { SemestreInfo } from '../../types/semestre';
 
 describe('Consultar disciplinas disponíveis', () => {
     it('deve ser possível consultar as disciplinas disponíveis, excluindo as que já foram cursadas', () => {
@@ -30,6 +31,9 @@ describe('Consultar disciplinas disponíveis', () => {
             cr: 0       
         }
 
+        const disciplinaRepo = new InMemoryDisciplinasRepository();
+        PreencheBD(disciplinaRepo);
+
         const consulta_disciplina = new ConsultarDisciplina(disciplinaRepo);
         const disciplinas_disponiveis01 = consulta_disciplina.ConsultarDisciplinasDisponiveis(aluno01);
         const disciplinas_disponiveis02 = consulta_disciplina.ConsultarDisciplinasDisponiveis(aluno02);
@@ -39,74 +43,115 @@ describe('Consultar disciplinas disponíveis', () => {
 
     })
     /*
-    *   TEST SETUP
-    *
+    * TEST INFO SETUP
     */
-    const disciplina01 : Disciplina = {
+    const disciplina_base01 : Disciplina_base = {
         id: 'D0001',
         nome: 'Calculo I',
         carga_horaria: 240,
         pre_requisito: [],
-        professor: '',
-        horario: '',
-        sala: '',
-        vagas: 5,
         periodo: 1 
     }
+
+    const semestre_info01 : SemestreInfo = {
+        ano: 2024,
+        semestre: 1,
+        professor: 'Luiz',
+        horario: '',
+        sala: 'E12',
+        vagas: 5
+    }
     
-    const disciplina02 : Disciplina = {
+    const disciplina01 : Disciplina = {
+        disciplina_base :  disciplina_base01,
+        semestre_info : semestre_info01
+    }
+
+    const disciplina_base02 : Disciplina_base = {
         id: 'D0002',
         nome: 'Geometria Analítica',
         carga_horaria: 240,
         pre_requisito: [],
-        professor: '',
-        horario: '',
-        sala: '',
-        vagas: 0,
         periodo: 1 
     }
+
+    const semestre_info02 : SemestreInfo = {
+        ano: 2024,
+        semestre: 1,
+        professor: 'Luiz',
+        horario: '',
+        sala: 'E12',
+        vagas: 5
+    }
     
-    const disciplina03 : Disciplina = {
+    const disciplina02 : Disciplina = {
+        disciplina_base :  disciplina_base02,
+        semestre_info : semestre_info02
+    }
+
+    const disciplina_base03 : Disciplina_base = {
         id: 'D0003',
         nome: 'Física I',
         carga_horaria: 240,
         pre_requisito: [],
-        professor: '',
-        horario: '',
-        sala: '',
-        vagas: 2,
         periodo: 1 
     }
+
+    const semestre_info03 : SemestreInfo = {
+        ano: 2024,
+        semestre: 1,
+        professor: 'Luiz',
+        horario: '',
+        sala: 'E12',
+        vagas: 5
+    }
     
-    const disciplina04 : Disciplina = {
+    const disciplina03 : Disciplina = {
+        disciplina_base :  disciplina_base03,
+        semestre_info : semestre_info03
+    }
+
+    const disciplina_base04 : Disciplina_base = {
         id: 'D0004',
         nome: 'Física II',
         carga_horaria: 240,
         pre_requisito: ['D0003'],
-        professor: '',
-        horario: '',
-        sala: '',
-        vagas: 3,
         periodo: 2 
     }
+
+    const semestre_info04 : SemestreInfo = {
+        ano: 2024,
+        semestre: 1,
+        professor: 'Luiz',
+        horario: '',
+        sala: 'E12',
+        vagas: 5
+    }
     
-    const disciplina05 : Disciplina = {
+    const disciplina04 : Disciplina = {
+        disciplina_base :  disciplina_base04,
+        semestre_info : semestre_info04
+    }
+
+    const disciplina_base05 : Disciplina_base = {
         id: 'D0005',
         nome: 'Cálculo II',
         carga_horaria: 240,
         pre_requisito: ['D0001', 'D0002'],
-        professor: '',
-        horario: '',
-        sala: '',
-        vagas: 1,
         periodo: 2 
     }
-    
-    const disciplinaRepo = new InMemoryDisciplinasRepository();
-    disciplinaRepo.create(disciplina01);
-    disciplinaRepo.create(disciplina02);
-    disciplinaRepo.create(disciplina03);
-    disciplinaRepo.create(disciplina04);
-    disciplinaRepo.create(disciplina05);
 
+    const semestre_info05 : SemestreInfo = {
+        ano: 2024,
+        semestre: 1,
+        professor: 'Luiz',
+        horario: '',
+        sala: 'E12',
+        vagas: 5
+    }
+    
+    const disciplina05 : Disciplina = {
+        disciplina_base :  disciplina_base05,
+        semestre_info : semestre_info05
+    }  
 })

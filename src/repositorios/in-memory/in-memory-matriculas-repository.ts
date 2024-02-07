@@ -1,6 +1,7 @@
 
 import { Matricula } from "../../entities/matricula/matricula";
-import { Semestre } from "../../types/semestre";
+import { Aluno } from "../../types/aluno";
+import { Disciplina } from "../../types/disciplina";
 import { MatriculasRepository } from "../matriculas-repository";
 
 export class InMemoryMatriculasRepository implements MatriculasRepository{
@@ -10,9 +11,9 @@ export class InMemoryMatriculasRepository implements MatriculasRepository{
         this.items.push(matricula)
     }
     
-    async encontraMatriculaDuplicada(aluno: string, disciplina: string, periodo: Semestre): Promise<Matricula | null> {
+    async encontraMatriculaDuplicada(aluno: Aluno, disciplina: Disciplina): Promise<Matricula | null> {
         const matriculaDuplicada = this.items.find(matricula => {
-            return (aluno == matricula.aluno && disciplina == matricula.disciplina && periodo.ano == matricula.periodo.ano && periodo.semestre == matricula.periodo.semestre) ? matricula : false;
+            return (aluno.matricula == matricula.aluno.matricula && disciplina.disciplina_base.id == matricula.disciplina.disciplina_base.id && disciplina.semestre_info.ano == matricula.disciplina.semestre_info.ano && disciplina.semestre_info.semestre == matricula.disciplina.semestre_info.semestre) ? matricula : false;
         })
 
         if (!matriculaDuplicada) {
@@ -20,5 +21,10 @@ export class InMemoryMatriculasRepository implements MatriculasRepository{
         }
 
         return matriculaDuplicada;
+    }
+
+    async listarAlunosMatriculadosDisciplina(disciplina: Disciplina): Promise<Matricula[] | null>{
+        const lista_alunos_por_disciplina = this.items.filter((matricula) => matricula.disciplina.disciplina_base.id == disciplina.disciplina_base.id);
+        return lista_alunos_por_disciplina;
     }
 }
