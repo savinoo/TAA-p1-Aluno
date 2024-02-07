@@ -65,12 +65,15 @@ export class CriaMatricula {
 
             matriculasDisciplina.forEach(element => {
                 
-                // Finalista na verdade é quem cursa TCC II, mas nesse caso foi considerado em está no último período
+                // Aluno Finalista é quem cursa TCC II
+                // Aqui foi considerado quem está no último período
                 const aluno_finalista = element.aluno.periodo_atual == 10;
+                // Aluno Periodizado é considerado quem cursa a maioria das disciplinas do seu período atual
+                // Aqui foi considerado quem está no mesmo período da disciplina
                 const aluno_periodizado = element.aluno.periodo_atual == element.disciplina.disciplina_base.periodo;
                 
                 var pontuacaoAluno = element.aluno.cr;
-                
+
                 if(aluno_finalista){ 
                     pontuacaoAluno += 20;
                 // Aluno Periodizado
