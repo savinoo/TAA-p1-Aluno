@@ -7,7 +7,7 @@ import { PreencheBD } from '../../repositorios/in-memory/preenche-repositorio';
 import { SemestreInfo } from '../../types/semestre';
 
 describe('Consultar disciplinas disponíveis', () => {
-    it('deve ser possível consultar as disciplinas disponíveis, excluindo as que já foram cursadas', () => {
+    it('deve mostrar as disciplinas disponíveis, excluindo as que já foram cursadas', () => {
 
         const aluno01 : Aluno = {
             nome: 'Joao', 
