@@ -58,7 +58,6 @@ export class CriaMatricula {
     async calcularColocacaoAluno(aluno: Aluno, disciplina: Disciplina){
         // Lista de todos alunos matriculados na disciplina
         const matriculasDisciplina = await this.matriculasRepository.listarAlunosMatriculadosDisciplina(disciplina);
-        
         if(matriculasDisciplina){
             //Calcular a pontuação de todos os alunos matriculados
             var pontuacaoAlunos = new Array<PontuacaoMatricula>;

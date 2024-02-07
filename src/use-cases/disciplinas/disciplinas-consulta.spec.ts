@@ -9,8 +9,6 @@ import { SemestreInfo } from '../../types/semestre';
 describe('Consultar disciplinas disponíveis', () => {
     it('deve ser possível consultar as disciplinas disponíveis, excluindo as que já foram cursadas', () => {
 
-        const consoleMock = vi.spyOn(console, 'log')
-
         const aluno01 : Aluno = {
             nome: 'Joao', 
             matricula: 'M0001',
