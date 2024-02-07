@@ -76,7 +76,7 @@ describe('Testes para criação de matricula', () => {
     }
 
     const semestre_info03 : SemestreInfo = {
-        ano: 2025,
+        ano: 2024,
         semestre: 3,
         professor: 'Luiz',
         horario: '',
