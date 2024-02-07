@@ -84,8 +84,13 @@ export class CriaMatricula {
             // Ordenar por pontuação e retornar a posição do aluno
             pontuacaoAlunos.sort(compararPontuacao);
             const posAluno = pontuacaoAlunos.findIndex((element) => element.id_aluno == aluno.matricula) + 1;
+
+            if(posAluno >= 0){
+                return [posAluno, disciplina.semestre_info.vagas];
+            } else {
+                throw new Error('Aluno não matriculado nessa disciplina');
+            }
             
-            return [posAluno, disciplina.semestre_info.vagas];
         }
 
     }

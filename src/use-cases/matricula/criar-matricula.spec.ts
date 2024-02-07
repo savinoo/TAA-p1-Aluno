@@ -88,7 +88,20 @@ describe('criar matricula', () => {
 })
 
 describe('Matricular e Consultar Classificação', () => {
-    it('deve ser possível criar uma matricula e consultar a classificação do aluno', async () => {
+    it('deve ser possível criar uma matricula e consultar a classificação do aluno (Apenas um aluno)', async () => {
+
+        const matriculasRepository = new InMemoryMatriculasRepository();
+        const criaMatricula = new CriaMatricula(matriculasRepository);
+
+        await criaMatricula.executar({
+            aluno : aluno01, 
+            disciplina: disciplina01
+        })
+
+        expect(criaMatricula.calcularColocacaoAluno(aluno01, disciplina01)).resolves.toEqual([1,2]);
+    })
+
+    it('deve ser possível criar uma matricula e consultar a classificação do aluno (Vários alunos)', async () => {
 
         const matriculasRepository = new InMemoryMatriculasRepository();
         const criaMatricula = new CriaMatricula(matriculasRepository);
@@ -111,6 +124,20 @@ describe('Matricular e Consultar Classificação', () => {
         expect(criaMatricula.calcularColocacaoAluno(aluno01, disciplina01)).resolves.toEqual([3,2]);
         expect(criaMatricula.calcularColocacaoAluno(aluno02, disciplina01)).resolves.toEqual([2,2]);
         expect(criaMatricula.calcularColocacaoAluno(aluno03, disciplina01)).resolves.toEqual([1,2]);
+    })
+
+    it('Não deve ser possível consultar a classificação de um aluno não matriculado na disciplina', async () => {
+
+        const matriculasRepository = new InMemoryMatriculasRepository();
+        const criaMatricula = new CriaMatricula(matriculasRepository);
+
+        await criaMatricula.executar({
+            aluno : aluno01, 
+            disciplina: disciplina01
+        })
+
+        expect(criaMatricula.calcularColocacaoAluno(aluno02, disciplina01)).resolves.toThrow;
+
     })
 
     /*
