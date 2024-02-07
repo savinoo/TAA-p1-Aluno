@@ -19,6 +19,17 @@ describe('Consultar disciplinas disponíveis', () => {
             cr: 7.3        
         }
         
+        const disciplinaRepo = new InMemoryDisciplinasRepository();
+        PreencheBD(disciplinaRepo);
+
+        const consulta_disciplina = new ConsultarDisciplina(disciplinaRepo);
+        const disciplinas_disponiveis01 = consulta_disciplina.ConsultarDisciplinasDisponiveis(aluno01);
+
+        expect(disciplinas_disponiveis01).resolves.toEqual([disciplina03, disciplina05].sort(compararDisciplina));
+    })
+
+    it('deve mostrar apenas as disciplinas que não possuem pré requisitos', () => {
+     
         const aluno02 : Aluno = {
             nome: 'Pedro', 
             matricula: 'M0002',
@@ -33,11 +44,9 @@ describe('Consultar disciplinas disponíveis', () => {
         PreencheBD(disciplinaRepo);
 
         const consulta_disciplina = new ConsultarDisciplina(disciplinaRepo);
-        const disciplinas_disponiveis01 = consulta_disciplina.ConsultarDisciplinasDisponiveis(aluno01);
         const disciplinas_disponiveis02 = consulta_disciplina.ConsultarDisciplinasDisponiveis(aluno02);
 
-        expect(disciplinas_disponiveis01).resolves.toEqual([disciplina03, disciplina05].sort(compararDisciplina));
-        expect(disciplinas_disponiveis02).resolves.toEqual([disciplina05, disciplina04, disciplina03, disciplina02, disciplina01].sort(compararDisciplina));
+        expect(disciplinas_disponiveis02).resolves.toEqual([disciplina03, disciplina02, disciplina01].sort(compararDisciplina));
 
     })
     /*

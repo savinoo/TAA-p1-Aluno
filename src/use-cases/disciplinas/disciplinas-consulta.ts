@@ -47,7 +47,17 @@ export class ConsultarDisciplina {
                     disponivel = true;
                 });
             } else {
-                disciplinas_disponiveis = disciplinas_nao_cursadas;
+                disciplinas_nao_cursadas.forEach(element => {
+                    var pre_requisitos = element.disciplina_base.pre_requisito;
+                    var disponivel = true;
+                    if(pre_requisitos.length != 0){
+                        disponivel = false;
+                    }
+                    if(disponivel){
+                        disciplinas_disponiveis.push({... element});
+                    }
+                    disponivel = true;
+                });
             }
         }
 
