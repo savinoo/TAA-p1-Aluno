@@ -16,7 +16,6 @@ describe('Testes para criação de matricula', () => {
     })
     
     test('não é possível se matricular em um periodo posterior à data atual', () => {
-        const periodo = {ano: 2025, semestre: 2};
         
         expect(() => {
             return new Matricula({
@@ -27,7 +26,6 @@ describe('Testes para criação de matricula', () => {
     })
 
     test('não é possível registrar um semestre superior ao nº 2', () => {
-        const periodo = {ano: 2023, semestre: 3};
 
         expect(() => {
             return new Matricula({

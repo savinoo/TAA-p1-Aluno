@@ -24,7 +24,7 @@ export class InMemoryMatriculasRepository implements MatriculasRepository{
     }
 
     async listarAlunosMatriculadosDisciplina(disciplina: Disciplina): Promise<Matricula[] | null>{
-        const lista_alunos_por_disciplina = this.items.filter((matricula) => matricula.disciplina.disciplina_base.id == disciplina.disciplina_base.id);
+        const lista_alunos_por_disciplina = this.items.filter((matricula) => (matricula.disciplina.disciplina_base.id == disciplina.disciplina_base.id && matricula.disciplina.semestre_info.ano == disciplina.semestre_info.ano && matricula.disciplina.semestre_info.semestre == disciplina.semestre_info.semestre));
         return lista_alunos_por_disciplina;
     }
 }

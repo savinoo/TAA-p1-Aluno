@@ -137,7 +137,6 @@ describe('Matricular e Consultar Classificação', () => {
         })
 
         expect(criaMatricula.calcularColocacaoAluno(aluno02, disciplina01)).resolves.toThrow;
-
     })
 
     /*

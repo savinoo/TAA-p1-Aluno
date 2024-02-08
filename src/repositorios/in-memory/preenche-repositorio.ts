@@ -1,8 +1,9 @@
 import { InMemoryDisciplinasRepository } from "./in-memory-disciplina-repository"
-import { InMemoryMatriculasRepository } from "./in-memory-matriculas-repository"
 import { Disciplina } from "../../types/disciplina";
 import { Disciplina_base } from "../../types/disciplina";
 import { SemestreInfo } from "../../types/semestre";
+import { InMemoryAlunosRepository } from "./in-memory-alunos-repository";
+import { Aluno } from "../../types/aluno";
 
 export function PreencheBD(bd){
     if(bd instanceof InMemoryDisciplinasRepository){
@@ -125,8 +126,64 @@ export function PreencheBD(bd){
         disciplina_bd.create(disciplina05);
 
     } else 
-    if (bd instanceof InMemoryMatriculasRepository){
-        const matricula_bd = bd as InMemoryMatriculasRepository;
+    if (bd instanceof InMemoryAlunosRepository){
+        const aluno_bd = bd as InMemoryAlunosRepository;
+
+        const aluno01 : Aluno = {
+            matricula: 'M0001',
+            nome: 'Valmir',
+            data_ingresso: '',
+            curso: 'Engenharia da Computação',
+            periodo_atual: 2,
+            disciplinas_cursadas: ['D0003'],
+            cr: 9.0
+       }
+    
+       const aluno02 : Aluno = {
+            matricula: 'M0002',
+            nome: 'Lucas',
+            data_ingresso: '',
+            curso: 'Engenharia da Computação',
+            periodo_atual: 4,
+            disciplinas_cursadas: ['D0001', 'D0002'],
+            cr: 7.5
+        }
+    
+        const aluno03 : Aluno = {
+            matricula: 'M0003',
+            nome: 'Joao',
+            data_ingresso: '',
+            curso: 'Engenharia da Computação',
+            periodo_atual: 10,
+            disciplinas_cursadas: ['D0001', 'D0002', 'D0003', 'D0004'],
+            cr: 6.0
+        }
+
+        const aluno04 : Aluno = {
+            matricula: 'M0004',
+            nome: 'Maria',
+            data_ingresso: '',
+            curso: 'Engenharia da Computação',
+            periodo_atual: 6,
+            disciplinas_cursadas: ['D0002', 'D0003', 'D0004'],
+            cr: 4.0
+        }
+
+        const aluno05 : Aluno = {
+            matricula: 'M0005',
+            nome: 'Carla',
+            data_ingresso: '',
+            curso: 'Engenharia da Computação',
+            periodo_atual: 8,
+            disciplinas_cursadas: ['D0001', 'D0002', 'D0003'],
+            cr: 9.0
+        }
+
+        aluno_bd.create(aluno01);
+        aluno_bd.create(aluno02);
+        aluno_bd.create(aluno03);
+        aluno_bd.create(aluno04);
+        aluno_bd.create(aluno05);
 
     }
 }

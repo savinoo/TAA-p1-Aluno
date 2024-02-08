@@ -75,7 +75,7 @@ export class CriaMatricula {
 
                 if(aluno_finalista){ 
                     pontuacaoAluno += 20;
-                // Aluno Periodizado
+
                 }else if(aluno_periodizado){
                     pontuacaoAluno += 10;
                 }
