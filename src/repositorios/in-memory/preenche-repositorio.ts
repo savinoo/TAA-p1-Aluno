@@ -5,7 +5,7 @@ import { SemestreInfo } from "../../types/semestre";
 import { InMemoryAlunosRepository } from "./in-memory-alunos-repository";
 import { Aluno } from "../../types/aluno";
 
-export function PreencheBD(bd){
+export function PreencheBD(bd: any){
     if(bd instanceof InMemoryDisciplinasRepository){
         const disciplina_bd = bd as InMemoryDisciplinasRepository;
 

@@ -16,6 +16,6 @@ export class InMemoryAlunosRepository implements AlunosRepository{
             throw new Error('Aluno não encontrado no bd');
         }
 
-        return alunoFind;
+        return {... alunoFind};
     }
 }
