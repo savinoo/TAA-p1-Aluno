@@ -5,7 +5,9 @@ import { Disciplina, Disciplina_base, compararDisciplina } from '../../types/dis
 import { ConsultarDisciplina } from './disciplinas-consulta';
 import { PreencheBD } from '../../repositorios/in-memory/preenche-repositorio';
 import { SemestreInfo } from '../../types/semestre';
-
+/* TODO:
+Mudar para async e usar await na chamada das funcoes
+*/
 describe('Consultar disciplinas disponíveis', () => {
     it('deve mostrar as disciplinas disponíveis, excluindo as que já foram cursadas', () => {
 
@@ -24,7 +26,9 @@ describe('Consultar disciplinas disponíveis', () => {
 
         const consulta_disciplina = new ConsultarDisciplina(disciplinaRepo);
         const disciplinas_disponiveis01 = consulta_disciplina.ConsultarDisciplinasDisponiveis(aluno01);
-
+        /* TODO:
+        // Mover o sort para antes do expect
+        */
         expect(disciplinas_disponiveis01).resolves.toEqual([disciplina03, disciplina05].sort(compararDisciplina));
     })
 

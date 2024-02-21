@@ -7,7 +7,9 @@ export class ConsultarDisciplina {
     constructor(private disciplinasRepository : DisciplinasRepository){
         this.disciplinaRepo = disciplinasRepository;
     }
-
+    /* TODO:
+    // Usar try catch sempre que interagir com tecnologia externa
+    */
     async ConsultarDisciplinasDisponiveis(aluno: Aluno) : Promise <Disciplina[]>{
         if(!aluno){
             throw new Error('Aluno inválido');

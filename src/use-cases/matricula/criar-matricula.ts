@@ -42,6 +42,10 @@ export class CriaMatricula {
         )
 
         if(matriculaDuplicada){
+            /* TODO:
+            // throw aborta a aplicação
+            // trocar por return e tratar o erro no controller
+            */
             throw new Error('Essa matrícula já foi realizada');
         }
 
@@ -56,7 +60,10 @@ export class CriaMatricula {
     }
 
     async calcularColocacaoAluno(aluno: Aluno, disciplina: Disciplina){
-        // Lista de todos alunos matriculados na disciplina
+        /* TODO:
+        // Usar try catch sempre que interagir com tecnologia externa
+        */
+       // Lista de todos alunos matriculados na disciplina
         const matriculasDisciplina = await this.matriculasRepository.listarAlunosMatriculadosDisciplina(disciplina);
         if(matriculasDisciplina){
             //Calcular a pontuação de todos os alunos matriculados
