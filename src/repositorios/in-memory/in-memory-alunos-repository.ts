@@ -1,4 +1,5 @@
 
+import { E } from "vitest/dist/reporters-1evA5lom";
 import { Aluno } from "../../types/aluno";
 import { AlunosRepository } from "../alunos-repository";
 
@@ -9,11 +10,11 @@ export class InMemoryAlunosRepository implements AlunosRepository{
         this.items.push(aluno)
     }
     
-    async encontraAlunoPorMatricula(matricula: string): Promise<Aluno | null>{
+    async encontraAlunoPorMatricula(matricula: string): Promise<Aluno | Error>{
         const alunoFind = this.items.find((aluno) => aluno.matricula == matricula);
 
         if (!alunoFind) {
-            throw new Error('Aluno não encontrado no bd');
+            return new Error('Aluno não encontrado no bd');
         }
 
         return {... alunoFind};

@@ -35,7 +35,7 @@ export class CriaMatricula {
     async executar({
         aluno,
         disciplina
-    }: CriaMatriculaRequest): Promise<CriaMatriculaResponse>{
+    }: CriaMatriculaRequest): Promise<CriaMatriculaResponse | Error>{
         const matriculaDuplicada = await this.matriculasRepository.encontraMatriculaDuplicada(
             aluno,
             disciplina
@@ -46,7 +46,7 @@ export class CriaMatricula {
             // throw aborta a aplicação
             // trocar por return e tratar o erro no controller
             */
-            throw new Error('Essa matrícula já foi realizada');
+            return new Error('Essa matrícula já foi realizada');
         }
 
         const matricula = new Matricula({
