@@ -6,6 +6,15 @@ import { DisciplinasRepository } from "../disciplinas-repository";
 export class InMemoryDisciplinasRepository implements DisciplinasRepository{
     public items: Disciplina[] = []
 
+    private static instance: InMemoryDisciplinasRepository;
+
+    public static getInstanceBD():InMemoryDisciplinasRepository {
+        if(!InMemoryDisciplinasRepository.instance){
+            InMemoryDisciplinasRepository.instance = new InMemoryDisciplinasRepository();
+        }
+        return InMemoryDisciplinasRepository.instance;
+    }
+
     async create(disciplina: Disciplina): Promise<void> {
         this.items.push(disciplina)
     }

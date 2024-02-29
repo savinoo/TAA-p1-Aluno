@@ -7,6 +7,15 @@ import { MatriculasRepository } from "../matriculas-repository";
 export class InMemoryMatriculasRepository implements MatriculasRepository{
     public items: Matricula[] = []
 
+    private static instance: InMemoryMatriculasRepository;
+
+    public static getInstanceBD():InMemoryMatriculasRepository {
+        if(!InMemoryMatriculasRepository.instance){
+            InMemoryMatriculasRepository.instance = new InMemoryMatriculasRepository();
+        }
+        return InMemoryMatriculasRepository.instance;
+    }
+
     async create(matricula: Matricula): Promise<void> {
         this.items.push(matricula)
     }

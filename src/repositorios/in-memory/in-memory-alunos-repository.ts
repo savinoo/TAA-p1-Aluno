@@ -1,10 +1,18 @@
 
-import { E } from "vitest/dist/reporters-1evA5lom";
 import { Aluno } from "../../types/aluno";
 import { AlunosRepository } from "../alunos-repository";
 
 export class InMemoryAlunosRepository implements AlunosRepository{
     public items: Aluno[] = []
+
+    private static instance: InMemoryAlunosRepository;
+
+    public static getInstanceBD():InMemoryAlunosRepository {
+        if(!InMemoryAlunosRepository.instance){
+            InMemoryAlunosRepository.instance = new InMemoryAlunosRepository();
+        }
+        return InMemoryAlunosRepository.instance;
+    }
 
     async create(aluno: Aluno): Promise<void> {
         this.items.push(aluno)

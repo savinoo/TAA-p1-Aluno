@@ -6,4 +6,5 @@ export type Aluno = {
     periodo_atual: number;  
     disciplinas_cursadas: Array<string>;
     cr: number;
+    pass: string;
 }

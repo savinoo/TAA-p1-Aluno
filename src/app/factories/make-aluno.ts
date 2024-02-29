@@ -2,7 +2,9 @@ import { InMemoryAlunosRepository } from "../../repositorios/in-memory/in-memory
 import { PreencheBD } from "../../repositorios/in-memory/preenche-repositorio";
 
 export function makeAlunoBD(){
-    const alunoBD = new InMemoryAlunosRepository();
-    PreencheBD(alunoBD);
+    const alunoBD = InMemoryAlunosRepository.getInstanceBD();
+    if(alunoBD.items.length == 0){
+        PreencheBD(alunoBD);
+    }
     return alunoBD;
 }

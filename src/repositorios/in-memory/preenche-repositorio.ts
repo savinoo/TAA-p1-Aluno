@@ -136,7 +136,8 @@ export function PreencheBD(bd: any){
             curso: 'Engenharia da Computação',
             periodo_atual: 2,
             disciplinas_cursadas: ['D0003'],
-            cr: 9.0
+            cr: 9.0,
+            pass:""
        }
     
        const aluno02 : Aluno = {
@@ -146,7 +147,8 @@ export function PreencheBD(bd: any){
             curso: 'Engenharia da Computação',
             periodo_atual: 4,
             disciplinas_cursadas: ['D0001', 'D0002'],
-            cr: 7.5
+            cr: 7.5,
+            pass:""
         }
     
         const aluno03 : Aluno = {
@@ -156,7 +158,8 @@ export function PreencheBD(bd: any){
             curso: 'Engenharia da Computação',
             periodo_atual: 10,
             disciplinas_cursadas: ['D0001', 'D0002', 'D0003', 'D0004'],
-            cr: 6.0
+            cr: 6.0,
+            pass:""
         }
 
         const aluno04 : Aluno = {
@@ -166,7 +169,8 @@ export function PreencheBD(bd: any){
             curso: 'Engenharia da Computação',
             periodo_atual: 6,
             disciplinas_cursadas: ['D0002', 'D0003', 'D0004'],
-            cr: 4.0
+            cr: 4.0,
+            pass:""
         }
 
         const aluno05 : Aluno = {
@@ -176,7 +180,8 @@ export function PreencheBD(bd: any){
             curso: 'Engenharia da Computação',
             periodo_atual: 8,
             disciplinas_cursadas: ['D0001', 'D0002', 'D0003'],
-            cr: 9.0
+            cr: 9.0,
+            pass:""
         }
 
         aluno_bd.create(aluno01);

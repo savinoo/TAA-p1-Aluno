@@ -4,7 +4,9 @@ import { ConsultarDisciplina } from "../../use-cases/disciplinas/disciplinas-con
 
 export function makeDisciplinaUseCase(){
     const bd = new InMemoryDisciplinasRepository();
-    PreencheBD(bd);
+    if(bd.items.length == 0){
+        PreencheBD(bd);
+    }
     const disciplinaConsultaUseCase = new ConsultarDisciplina(bd);
     return disciplinaConsultaUseCase;
 }
