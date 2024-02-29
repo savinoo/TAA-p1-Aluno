@@ -6,17 +6,17 @@ const alunos = [
     { matricula: 'aluno2', pass: 'senha2' }
 ];
 
-export function login_(matricula: string, pass: string){
+export function login_(matricula: string, pass: string) {
     const aluno = alunos.find((aluno) => aluno.matricula === matricula);
 
-    if(!aluno) {
+    if (!aluno) {
         return null
     }
 
-    if(aluno.pass !== pass) {
+    if (aluno.pass !== pass) {
         return null
     }
 
-    const token = generateToken({matricula, pass})
+    const token = generateToken({ matricula, pass })
     return token
 }
